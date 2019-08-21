@@ -1,7 +1,7 @@
 ---
 title: Homepage
 layout: template
-filename: index.md
+filename: README.md
 --- 
 
 # Data Science Portfolio
