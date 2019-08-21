@@ -12,7 +12,7 @@ This repository is a compilation of projects completed related to data analysis/
 
 ---
 
-<h2><a href="skim09.github.io/optimism-financial">Account Half Full: The Association between Optimism and Financial Well-Being</a></h2>
+<h2><a href="https://skim09.github.io/optimism-financial">Account Half Full: The Association between Optimism and Financial Well-Being</a></h2>
 * Explores whether there is an association between one's level of optimism and their level of financial well-being, and whether it varies across economic classes.
 * Exhaustive analysis on univariate, bivariate, and multivariate levels.
 * Focus on data visualization and presentation for a poster presentation.
@@ -21,7 +21,7 @@ This repository is a compilation of projects completed related to data analysis/
 
 ---
 
-<h2><a href="skim09.github.io/manchester-united">The Two Halves of Manchester United</a></h2>
+<h2><a href="https://skim09.github.io/manchester-united">The Two Halves of Manchester United</a></h2>
 * Network analysis of two back-to-back matches played by Manchester United in the Premier League in 2018
 * Analyze the passing network with players as nodes and passes as edges (both directed and undirected analyses)
 * Identify key differences in tactical changes between halves in the same game
@@ -30,7 +30,7 @@ This repository is a compilation of projects completed related to data analysis/
 
 ---
 
-<h2><a href="skim09.github.io/fifa-19">FIFA 19: A Study of Different Player Types</a></h2>
+<h2><a href="https://skim09.github.io/fifa-19">FIFA 19: A Study of Different Player Types</a></h2>
 * Exploratory data analysis and pattern discovery on FIFA 19 player dataset.
 * Application of cluster analysis and factor analysis on player attributes.
 * Attempted merging of cluster analysis and factor analysis and breakdown of limitations.
@@ -39,7 +39,7 @@ This repository is a compilation of projects completed related to data analysis/
 
 ---
 
-<h2><a href="skim09.github.io/climate-change">Climate Change and Counteractive Methods: Air Conditioning Costs and Differences in Cooling Methods</a></h2>
+<h2><a href="https://skim09.github.io/climate-change">Climate Change and Counteractive Methods: Air Conditioning Costs and Differences in Cooling Methods</a></h2>
 * Application of quantitative methods in economics.
 * Paper explores the differences in type of air conditioning equipment and their costs.
 * Broader purpose of offering the argument that not taking steps to prevent climate change will end up costing American individuals more.
