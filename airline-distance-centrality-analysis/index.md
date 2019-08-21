@@ -1,3 +1,9 @@
+---
+title: Airlines
+layout: template
+filename: index.md
+--- 
+
 # The Role of Airlines in the Analysis of Correlation between Distance and Centrality in Air Transportation
 ### An Application of Network Science on European Air Networks
 
