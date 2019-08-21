@@ -8,6 +8,7 @@ This repository is a compilation of projects completed related to data analysis/
 * Exploration of differences in network characteristics if network is filtered by airline
 * Focus on geography and centrality measures
 * **Keywords** (Python, Network Science, Multiplex Analysis, Centrality Analysis, Flight Data)
+
 <img src="static/degree_centrality_airlinelayered.png" width="364">
 
 ---
@@ -17,6 +18,7 @@ This repository is a compilation of projects completed related to data analysis/
 * Exhaustive analysis on univariate, bivariate, and multivariate levels.
 * Focus on data visualization and presentation for a poster presentation.
 * **Keywords** (R, Data Analysis, Linear Regression, Data Visualization, Consumer Finance Data)
+
 <img src="static/figure_2.png" width="400">
 
 ---
@@ -26,6 +28,7 @@ This repository is a compilation of projects completed related to data analysis/
 * Analyze the passing network with players as nodes and passes as edges (both directed and undirected analyses)
 * Identify key differences in tactical changes between halves in the same game
 * **Keywords** (R, Network Analysis, Sports/Soccer Analytics, Manchester United Data)
+
 <img src="githubfigures/chelsea/cropsecondhalf1.png" width="295" height="253">
 
 ---
@@ -35,6 +38,7 @@ This repository is a compilation of projects completed related to data analysis/
 * Application of cluster analysis and factor analysis on player attributes.
 * Attempted merging of cluster analysis and factor analysis and breakdown of limitations.
 * **Keywords** (R, EDA, Pattern Discovery, Cluster Analysis, Factor Analysis, FIFA 19 Data)
+
 <img src="fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-13-1.png" width="400">
 
 ---
