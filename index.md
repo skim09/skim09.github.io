@@ -1,3 +1,9 @@
+---
+title: Homepage
+layout: template
+filename: index.md
+--- 
+
 # Data Science Portfolio
 This repository is a compilation of projects completed related to data analysis/data science during the past year of my education at Wesleyan University. Projects range from applications of network science on airline networks to exploring and discovering patterns in data on a FIFA 19 player dataset.
 
