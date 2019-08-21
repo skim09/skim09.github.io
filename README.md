@@ -3,7 +3,7 @@ This repository is a compilation of projects completed related to data analysis/
 
 ## Projects:
 
-###  [The Role of Airlines in the Analysis of Correlation between Distance and Centrality in Air Transportation](skim09.github.io/airline-layers)
+<a href="skim09.github.io/airline-layers">The Role of Airlines in the Analysis of Correlation between Distance and Centrality in Air Transportation</a>
 * Network analysis of European flight network with airports as nodes and flight paths as edges
 * Exploration of differences in network characteristics if network is filtered by airline
 * Focus on geography and centrality measures
