@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
@@ -101,3 +102,8 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+=======
+remote_theme: mmistakes/minimal-mistakes
+title: Sangwon Kim
+description: Wesleyan University | Computer Science | Data Science
+>>>>>>> eff1a0bb9ea2805749653930f1fc4f49812cc596

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
@@ -15,3 +16,6 @@ group :jekyll_plugins do
   gem "jekyll-include-cache"
   gem "jekyll-algolia"
 end
+=======
+gem "minimal-mistakes-jekyll"
+>>>>>>> eff1a0bb9ea2805749653930f1fc4f49812cc596
