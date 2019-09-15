@@ -2,3 +2,4 @@ theme: jekyll-theme-minimal
 title: Sangwon Kim
 description: Wesleyan University 2020<br>Computer Science Major<br>Applied Data Science Certificate
 logo: "static/Sangwon_Kim_headshot copy.jpg"
+show_downloads: true
