@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
 title: Sangwon Kim
 description: Wesleyan University | Computer Science | Data Science
-logo: static/Sangwon_Kim_headshot copy.jpg
+logo: "static/Sangwon_Kim_headshot copy.jpg"
 show_downloads: "false"
