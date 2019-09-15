@@ -1,3 +1,7 @@
+---
+title: "FIFA 19"
+---
+
 # FIFA 19: A Study of Different Player Types
 ### An Application of Data Exploration and Pattern Discovery Techniques to Video Game Data
 

@@ -1,3 +1,8 @@
+---
+title: "Manchester United"
+---
+
+
 # The Two Halves of Manchester United
 ### An Application of Network Analysis on Premier League Football
 
@@ -76,7 +81,7 @@ Figure 3b is reminiscent of Figure 1b of the Newcastle first half, with the thic
 Figure 3c takes the subset of the highest passing routes, and it illustrates the point even further as the ball is being played quite often to the left, and both Martial and Shaw are resorted to passing between themselves, trapped on the sideline, unable to move the ball forward or through the middle to the other side.
 
 
-Despite this bleak showing, halftime comes as it always does, and once again the second half is a completely different story. The same analysis on the second half tells a completely different story. Most notably, Romelu Lukaku, the striker, is *the most* influential player in the squad. The following four are the next highest playing four players on the field. The bottom two players are the two center backs who sit the deepest. 
+Despite this bleak showing, halftime comes as it always does, and once again the second half is a completely different story. The same analysis on the second half tells a completely different story. Most notably, Romelu Lukaku, the striker, is *the most* influential player in the squad. The following four are the next highest playing four players on the field. The bottom two players are the two center backs who sit the deepest.
 
 <p align="center">
 <img src="githubfigures/chelsea/cropeigen2.png" width="291" height="253" title="Figure 4a">
