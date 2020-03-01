@@ -80,7 +80,6 @@
           </p>
 
           <p><b>Research Question</b></p>
-
           <p>
             <ul class = "dashed">
               <li>Is there an association between one’s level of optimism and their financial well-being?</li>
@@ -91,7 +90,6 @@
           <h2 class="section-heading">Methodology</h2>
 
           <p><b>Sample</b></p>
-
           <p>
             <ul class = "dashed">
               <li>Data from National Financial Well-Being Survey (NFWBS) conducted by the Consumer Financial Protection Bureau (CFPB) in 2016.</li>
@@ -101,121 +99,66 @@
             </ul>
           </p>
 
-          <h2 class="section-heading">Analysis</h2>
+          <p><b>Measures</b></p>
+          <p>
+            <ul class = "dashed">
+              <li>Financial well-being scale score constructed using Item Response Theory methods developed by the CFPB.</li>
+              <li>Represents individual’s overall financial health and ability to manage money.</li>
+              <li>Financial well-being scale constructed by a 10-item survey each with 5 response options ranging from “Never” to “Always” or “Does not describe me at all” to “Describes me completely”.</li>
+              <li>NFWBS optimism survey question “I am optimistic about my future” has response options from a scale to 1 to 7, with 1 being “Strongly disagree” and 7 being “Strongly agree”.</li>
+            </ul>
+          </p>
 
-          <p><i>Finding the Geographic Center of Europe</i></p>
+          <h2 class="section-heading">Results</h2>
 
-          <p>One of the key components of the analysis involves geographic distance between airports in real life. As the latitude and longitude coordinates for each airport are given, distances between nodes are calculated as the Euclidean distance between those two coordinates. This paper also investigates relationships between centrality measures and distance from the geographic center. I defined this as the mathematical average (sum/n) of longitudes and latitudes of all the airports in the dataset, which calculated to be a coordinate of 12.645 degrees longitude and 48.652 degrees latitude, which is somewhere in Landau an der Isar, Germany, near the border between Czechia and Austria.</p>
+          <p><b>Univariate</b></p>
+          <p>
+            <ul class = "dashed">
+              <li>Average financial well-being scale score was 56, with the lowest being 14 and the highest being 95.</li>
+              <li>A large proportion of people responded as being optimistic towards their future, with 26% “strongly agree” and 29% “agree”.</li>
+              <li>But only 2.1% “strongly disagree” and 2.2% “disagree”.</li>
+            </ul>
+          </p>
 
-          <p><i>Centrality Measures of the Europe Air Transportation Network</i></p>
+          <p><b>Bivariate</b></p>
+          <p>
+            <ul class = "dashed">
+              <li>Linear regression analysis showed that people who responded positively to the question of optimism were significantly more likely to have a higher financial well-being score.</li>
+              <li>Compared to “strongly disagree”, “strongly agree” responders on average had a higher FWB score of 17.2. “Agree” responders were 16.2 points higher, “Somewhat agree” were 9.8 points higher, and “Neither” were 6.5 points higher. For all of these results, at least p < 0.000001 (Figure 1).</li>
+              <li>“Somewhat disagree” and “Disagree” responders had no statistically significant difference with “Strongly disagree”.</li>
+            </ul>
+          </p>
 
-          <p>First, I look at the various measures of centrality of the entire European air network as a whole, including degree centrality, betweenness centrality, and closeness centrality. The below graphs plot each airport in the network with its centrality (in order of previous list) on the y-axis and its distance from the geographic center on the x-axis.</p>
+          <img class="img-fluid" src="img/figure_1.png" alt="">
+          <span class="caption text-muted">Figure 1</span>
 
-          <a href="#">
-            <img class="img-fluid" src="img/degree_centrality_europe.png" alt="">
-          </a>
-          <span class="caption text-muted">Degree centrality of Europe network</span>
+          <p><b>Multivariate</b></p>
+          <p>
+            <ul class = "dashed">
+              <li>Positive responses to optimism maintained its significance of at least p < 0.00001 after controlling for other possible confounding variables such as education, ethnicity, gender, generation, and poverty level.</li>
+              <li>FWB scores were lower for individuals in lower poverty levels (as expected), but the positive association between optimism and financial well-being was still present with a significance of p < 0.000001 (Figure 2).</li>
+            </ul>
+          </p>
 
-          <a href="#">
-            <img class="img-fluid" src="img/betweenness_centrality_europe.png" alt="">
-          </a>
-          <span class="caption text-muted">Betweenness centrality of Europe Network</span>
-
-          <a href="#">
-            <img class="img-fluid" src="img/closeness_centrality_europe.png" alt="">
-          </a>
-          <span class="caption text-muted">Closeness centrality of Europe network</span>
-
-          <p>For degree and betweenness centrality we see a trend of relatively higher centralities in nodes with a lower distance from the center, but not following any discernible law or pattern. This makes sense for both degree and betweenness distribution, because airports that would have a high degree centrality are likely to have routes spreading in all directions, which is only really likely to be more centrally located (under 2500km from the geographic center) since we are only considering routes within Europe. As for betweenness centrality, it requires a bit more delicate approach to understanding, as there are not too as many values that are visibly separated from the pack. The top three betweenness centralities for this network are ENGM, LGAV, and LTBA, which translated from ICAO airport codes are Oslo Airport in Norway, Athens International Airport in Greece, and Istanbul Atatürk Airport in Turkey. These are all airports that are more on the peripheral areas, and it is likely that these airports have edges that connect to other, less popular airports, leading to these initial airports having a high betweenness centrality as very many paths would have to go through them to access the domestic airports on the corners of Europe. Closeness centrality is more linearly correlated, and had there been more airports with higher distances around the 4000 km there may be a more visible linear correlation, but nevertheless it is apparent the decreasing trend of closeness centrality as distance decreases. This signifies that the network does not have edges spanning from all areas to all other areas, but rather routes from one end to the other end of the Europe would require taking more edges (flights) to get there. If this were not the case, we would not see the trend of nodes being more centrally located geographically being able to reach other nodes in shorter paths (on average), and more peripherally located nodes taking longer to each other nodes (on average).</p>
-
-          <p><i>Using Airlines as Layers to the Europe Air Transportation Network</i></p>
-
-          <p>While the preliminary analysis on the entire network as a whole has uncovered some basic structural tendencies, it has yet to be seen what differences will manifest once we pick it apart by airline layer. Analyses are run on each layer by subsetting the graph by its ‘airline’ edge attributes. For each layer, the degree centrality, betweenness centrality, and closeness centrality was calculated for each airport, in addition to each airport’s distance from the geographic center (in Germany). Then, three airports, each with one of the highest degree centralities, were selected, but in 36 cases out of 38 airlines, all three airports were the same one; that is, one airport had the highest degree, betweenness, and closeness centralities.</p>
-
-          <a href="#">
-            <img class="img-fluid" src="img/airline_table.png" alt="">
-          </a>
-          <span class="caption text-muted">Had different (but geographically close) values for betweenness and closeness centrality</span>
-
-          <p>The above figure contains the airport with the highest degree centrality and its distance from the geographic center for each airline. Very often (36 out of 38) the airport with the highest degree centrality also had the highest betweenness and closeness centrality, marking that airport as the most central node of that airline network. However, the vastly diverse and wide range of values of distances from the center, ranging from as close as 100 km to as far as 2645 km shows that the center of a transportation network is heavily dependent on the airline in question. This has to do with the fact that there is no one all-encompassing “European” Airline, so each airline is affiliated with a specific country or a specific city. Lufthansa, for example, is the largest German (and incidentally largest European) airline headquartered in Cologne, and its most degree central airport is Munich Airport; British Airways is an airline of the United Kingdom, and fittingly its most degree central airport is London Heathrow Airport, and so forth all airlines have a certain national affiliation and its most central city is from that nation. So, we see that the entire European air network is a combination, or a layering, of many smaller networks of separate airlines that all operate revolving around their own home country and/or city.</p>
-
-          <p>Referring back to the first three figures involving the scatter plot with distance from the geographical center on the x axis and centralities on the y axis, these graphs were constructed under the assumption that there are no specific distinctions between airlines and the network is treated as such. So now, the x-axis variable is changed so that the values are not distances from the general geographic center in Landau an der Isar, but rather the geographic distances from the most central airport (node with highest degree centrality) <i>for each airline</i>. In other words, each airline has a different central node and a different centrality graph. Just as the multiplex network of Europe air transportation is constructed by layering the networks of airline routes, I created a scatter plot that is the product of essentially layering the scatter graphs of each airline on top of each other. The left figures contain graphs of distance from the overall highest degree centrality node (turning out to be Amsterdam Airport) against centralities, and the right column contains graphs of distance from the airline-respective highest degree centrality nodes against centralities.</p>
-
-          <p align = "center"><i>Network with no airline differentiation</i></p>
-
-          <a href="#">
-            <img class="img-fluid" src="img/degree_centrality_NOairdiff.png" alt="">
-          </a>
-          <span class="caption text-muted">Degree centrality of network with no airline differentiation</span>
-
-          <a href="#">
-            <img class="img-fluid" src="img/betweenness_centrality_NOairdiff.png" alt="">
-          </a>
-          <span class="caption text-muted">Betweenness centrality of network with no airline differentiation</span>
-
-          <a href="#">
-            <img class="img-fluid" src="img/closeness_centrality_NOairdiff.png" alt="">
-          </a>
-          <span class="caption text-muted">Closeness centrality of network with no airline differentiation</span>
-
-          <p align = "center"><i>Network with airline layering</i></p>
-
-          <a href="#">
-            <img class="img-fluid" src="img/degree_centrality_airlinelayered.png" alt="">
-          </a>
-          <span class="caption text-muted">Degree centrality of network with airline layering</span>
-
-          <a href="#">
-            <img class="img-fluid" src="img/betweenness_centrality_airlinelayered.png" alt="">
-          </a>
-          <span class="caption text-muted">Betweenness centrality of network with airline layering</span>
-
-          <a href="#">
-            <img class="img-fluid" src="img/closeness_centrality_airlinelayered.png" alt="">
-          </a>
-          <span class="caption text-muted">Closeness centrality of network with airline layering</span>
-
-          <p>Understanding the Effect of Layering through Slopes</p>
-
-          <p>To better understand and visualize the differences that come about through exploring a network that is composed of different layers, I found the <i>slopes</i>, a simple fitted line through the graphs that are displayed in the previous parts, and the different slopes for airlines are visualized as follows.</p>
-
-          <a href="#">
-            <img class="img-fluid" src="img/degree_distance_centrality_slopes.png" alt="">
-          </a>
-
-          <a href="#">
-            <img class="img-fluid" src="img/betweenness_distance_centrality_slopes.png" alt="">
-          </a>
-
-          <a href="#">
-            <img class="img-fluid" src="img/closeness_distance_centrality_slopes.png" alt="">
-          </a>
-
-          <p>Each graph is constructed identically except for the centrality that is being measured. The x axis is composed of the different airlines, and the rightmost x value represents <i>all</i> airlines combined. The y value is the slope of points when nodes are graphed through a distance from the most central node vs. centrality graph. What this means is that if the height of the bar is above 0 and highly positive, on average the centrality in question goes up as distance from the center increases, i.e. the further an airport is for a particular airline, the more likely that it will have a high centrality. It is important to note that for these figures, “distance” is defined as the distance of an airport from the most central airport in the total network, which is Amsterdam Airport Schiphol, located in the Netherlands. With this information in hand, it is clear that all the airlines have different slopes, meaning that some airlines have airports with higher centralities far from the Netherlands and some airlines have airports with higher centralities near the Netherlands. It is clear that the rightmost slope value of *all* airlines combined cannot possibly represent the diverse range of slopes of all airlines. To consider why airlines have different slopes, a look at the most extreme values show why. The top three highest slope airlines for degree centrality are Air Nostrum, TAP Portugal, and Aegean Airlines. These airlines are headquartered in Spain (Valencia), Portugal, and Greece. Portugal and Greece are at the very corners of the European map with Amsterdam at the center, and while Valencia is a little bit closer Air Nostrum is also a regional airline and does not have many flights extending past Spain. Thus, we see that the top three airlines are centered around cities and countries that are very far from the most central node of Amsterdam, and thus have high positive slopes. The three most negative airline slopes are Brussels Airlines, Transavia Holland, and Germanwings, which are Belgian, Dutch, and German. It is no coincidence that Belgium and Germany are the two countries that share a border with the Netherlands, and thus a negative slope makes sense, as for these airlines they would have less central nodes the farther away from Amsterdam they get. Similar results hold for the other centralities, with Niki (a low-cost Austrian airline) showing high positive slopes for betweenness and closeness and TNT Airways (another Belgian airline) showing high negative slopes for betweenness and closeness. The underlying mechanism is the same, as all these airlines are headquartered in different places and do not construct their route networks to revolve around Amsterdam, even if it is the most central airport for Europe as a whole; rather, the airlines function more clearly around their <i>own</i> central airports.</p>
-
-          <p>If one changes the definition of “distance” to mean not the distance of an airport from Europe’s most central node but rather the distance of an airport from an <i>airline</i>’s most central node, striking changes occur. The bottom figures are constructed in the exact same manner as the ones above, except now the distances have been defined differently for each airline.</p>
-
-          <a href="#">
-            <img class="img-fluid" src="img/degree_newdistance_centrality_slopes.png" alt="">
-          </a>
-
-          <a href="#">
-            <img class="img-fluid" src="img/betweenness_newdistance_centrality_slopes.png" alt="">
-          </a>
-
-          <a href="#">
-            <img class="img-fluid" src="img/closeness_newdistance_centrality_slopes.png" alt="">
-          </a>
-
-          <p>Immediately it is glaring how almost every slope is now strongly negative, meaning that centrality decreases as distance increases. In context, it signifies that the farther airports are from the most central airport, they are less well connected, which makes sense because airlines will be most well connected near their country of origin and nearby countries, and not so much far from home. However, it is more difficult to differentiate and reason why some airlines have stronger negative values and others do not. For example, three of the biggest airlines in Europe, Lufthansa, Ryanair, and KLM, have relatively lower than average values for centrality in almost all centralities. This can tentatively be attributed to the hypothesis that such huge companies likely have better, less concentrated flight routes that are relatively well connected even outside of their home countries. The strongest negative centrality slopes belong to the Flybe airline, which after some research shows that Flybe operates mainly short haul services to destinations throughout the United Kingdom, Republic of Ireland, and continental Europe. This notion of short haul services implies that most of the flight routes involve geographically close airports, and thus the likelihood of flights far away having any real connectivity to other airports is low. Generally, however, the trend of almost all slopes being negative points to the likely reality that most airlines construct flight routes around their own country, and the closer an airport is to that central home airport, the more likely it is to be connected in terms of node centrality. While it may be difficult to conjecture why certain airlines have certain values, conversely, such analysis may serve as a tool in which to gauge a certain airline’s strategy in route planning and whether the company is focused on long distance accessibility or regional monopolization of traffic.</p>
+          <img class="img-fluid" src="img/figure_2.png" alt="">
+          <span class="caption text-muted">Figure 2</span>
 
           <h2 class="section-heading">Conclusion</h2>
 
-          <p>This study has several limitations that give way to opportunities for further research and development in this area. First, the dataset was taken from a separate, independent research study, and as such is an incomplete dataset in that it does not contain all airlines (or possibly airports as well) in Europe, and it is undirected and unweighted. A more comprehensive study could account for the direction of flights (one-way vs. round trip) and the amount of passengers that actually travel the route under the specific airline. Additionally, many of the conclusions drawn are conjectural in nature, as the author is not an expert in either airline politics or airline business.</p>
+          <p>
+            <ul class = "dashed">
+              <li>Individuals that are more optimistic about their future are more likely to have higher financial well-being scores, but there is no significant difference between negative responses themselves.</li>
+              <li>Poverty level is significantly correlated with financial well-being, and the association between optimism and financial well-being holds true within poverty levels.</li>
+              <li>Such a result suggests that going forwards efforts in improving financial well-being may need to incorporate one’s psychological values in addition to other external factors such as financial literacy.</li>
+              <li>Further research is required into determining causality, and it also opens the discussion of what other psychological or philosophical ideals influence one’s financial well-being and health.</li>
+            </ul>
+          </p>
 
-          <p>However, the implications of this study are clear in suggesting that the popular method of approaching airline networks without regard for the dynamic layering of independent layers may warrant reconsideration, as identical analyses on a network treated as a single entity and the same network treated as a product of layers of smaller networks returned markedly different results that led to differing interpretations. That is not to say that airlines must never be ignored; rather, it offers evidence in support of the conscious and active consideration of airline influences when embarking on research or study of commercial air transportation networks in general. As aviation history develops and new factors are constantly being brought in, network analysis would do well to adapt to and account for the ever-changing nature of technology and business.</p>
+          <h2 class="section-heading">References</h2>
 
-          <p><i>Wesleyan University | Spring 2019 | Network Science | Professor Saray Shai</i></p>
+          <p>Allgood, S. and W. B. Walstad (2016). "The Effects of Perceived and Actual Financial Literacy on Financial Behaviors." Economic Inquiry 54(1): 675-697.<br>Tang, N. and A. Baker (2016). "Self-Esteem, Financial Knowledge and Financial Behavior." Journal of Economic Psychology 54: 164-176.</p>
+
+          <p><i>Wesleyan University | Spring 2019 | Applied Data Analysis | Professor Valerie Nazzaro</i></p>
         </div>
       </div>
     </div>
