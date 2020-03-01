@@ -280,12 +280,14 @@ header.masthead .post-heading .meta a {
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 10px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .post-preview > a > .post-subtitle {
   font-size: 20px;
   font-weight: 300;
   margin: 0 0 10px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .post-preview > .post-meta {
@@ -293,6 +295,7 @@ header.masthead .post-heading .meta a {
   font-style: italic;
   margin-top: 0;
   color: #868e96;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .post-preview > .post-meta > a {
