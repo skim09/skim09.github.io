@@ -56,8 +56,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>The Role of Airlines in the Analysis of Correlation between Distance and Centrality in Air Transportation</h1>
-            <h2 class="subheading">An Application of Network Science on European Air Networks</h2>
+            <h1>Account Half Full</h1>
+            <h2 class="subheading">The Association between Optimism and Financial Well-Being</h2>
           </div>
         </div>
       </div>
@@ -69,12 +69,37 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h2 class="section-heading">Background</h2>
-          <p>For over two thousand years, the history of aviation has stood witness to mankind’s persistent and ultimately successful struggle to take to the skies. From kite-flying to space exploration, flight technology has developed spectacularly, and today the airplane is statistically the safest form of travel, with over 4 billion passengers having flown in 2017. With the advent of the commercial flight industry also came airports and flight plans, and today the modern air travel system closely resembles a network in which airports are the nodes and flights between them are edges. Much analysis has been performed on air flight networks, such as investigating the role of airline networks in predicting the spread of global epidemics or simply identifying structural characteristics like the average shortest path or degree distribution of a US air transportation network. However, these analyses are often conducted without accounting for the differences in airline companies that plan the flights themselves. Rather, the network is created without any distinction of airlines and simply as one big network with edges between airports (nodes) if there is a flight (regardless of airline) between them. This raises the question of what characteristic network differences come into light if each airline’s flight network is to be studied independently and compared to a greater cumulative network that combines said airlines. This is the question that will be addressed and answered in this paper, with a focus on geography and centrality measures.</p>
+          <h2 class="section-heading">Introduction</h2>
+          <p>
+            <ul class = "dashed">
+              <li>Studies have shown relationships of financial behavior with external factors such as financial literacy and education methods as well as internal factors like self-esteem and sense of coherence with other people.</li>
+              <li>Financial literacy influences financial behavior, and an individual’s perceived financial literacy may be as important as actual financial literacy (Allgood et al., 2016).</li>
+              <li>In a more psychological dimension, studies have shown that self-esteem significantly relates to financial behavior positively, subject to varying financial knowledge (Tang et al., 2016).</li>
+              <li>This suggests that there are certain correlations between a person’s psychological tendencies and their economic health, but it has not been studied extensively.</li>
+            </ul>
+          </p>
+
+          <p><b>Research Question</b></p>
+
+          <p>
+            <ul class = "dashed">
+              <li>Is there an association between one’s level of optimism and their financial well-being?</li>
+              <li>Does this association vary across different economic classes?</li>
+            </ul>
+          </p>
 
           <h2 class="section-heading">Methodology</h2>
 
-          <p>This paper focuses on the European air transportation network, for a number of reasons. First, it has a greater variety of cities in terms of both size and location, which means that there is a greater diversity in flights between cities. Second, Europe is a continent with many different countries, and airlines from different countries will have different flight networks, unlike airlines in the US, which are likely to have relatively similar networks as big cities like New York, Los Angeles, and Chicago will be of equal value to US airlines. The data was downloaded online from a publicly available website created by Alessio Cardillo titled “Air Transportation Multiplex”, containing the original paper of <i>Emergence of Network Features from Multiplexity</i> and the dataset used to conduct the analysis. The dataset contains three main files of 1) layers 2) nodes and 3) the multiplex. The layers file is a text file with the first column the numeric ID (1 - 37) of an airline company and the second column the string of the name of the company. The nodes file is a text file with 4 columns, the first being the numeric ID of an airport, the second a four character string of the airport’s ICAO code, and the third and fourth columns being the longitude and latitude, respectively. The multiplex file is a text file with 4 columns defined as airline, airport1, airport2, and weight. Each observation represents an existing flight (edge) between two airports (nodes) and the airline that operates it. Due to the overlapping nature of flights by airlines, the resulting graph is an undirected multigraph with multiple edges between the same nodes. The final network contains 417 nodes and 3588 edges. The technical analysis of this data was performed using Python. The NetworkX package was used to study the structure and dynamics of the network along with pyplot framework from the Matplotlib library to visualize basic graphs.</p>
+          <p><b>Sample</b></p>
+
+          <p>
+            <ul class = "dashed">
+              <li>Data from National Financial Well-Being Survey (NFWBS) conducted by the Consumer Financial Protection Bureau (CFPB) in 2016.</li>
+              <li>Survey sample drawn from GfK KnowledgePanel</li>
+              <li>Population: Sample represents the noninstitutionalized adult (18+) population in the United States.</li>
+              <li>Overall sample size was 6394 participants.</li>
+            </ul>
+          </p>
 
           <h2 class="section-heading">Analysis</h2>
 

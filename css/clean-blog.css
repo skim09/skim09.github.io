@@ -424,6 +424,6 @@ ul.dashed > li {
   text-indent: -5px;
 }
 ul.dashed > li:before {
-  content: "-";
+  content: "-  ";
   text-indent: -5px;
 }
