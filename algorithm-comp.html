@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Algorithm Competition - Sangwon Kim</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">swk</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="data-projects.html">Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="software.html">Software</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/black.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>SAMSUNG SDSA ALGORITHM COMPETITION</h1>
+            <h2 class="subheading">2019 algorithm competition held at samsung SDS (korea and america)</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h2 class="section-heading">Background</h2>
+          <p>I interned at Samsung SDS America (SDSA) from June 2019 to August 2019, and during the summer I participated in the summer algorithm competition where participants submitted code to drive a simulated vehicle around a racecourse with various turns and obstacles. The competition was open to all employees in Samsung SDS, both in Korea and in America. The competition was divided into two parts: reinforcement learning driving (folder rl_code_v7) and rule-based driving (folder rule_code_v8). The competition used Microsoft's AirSim application and custom racetracks.<br><br>
+          Github repository link can be found <a href = "https://github.com/skim09/Samsung_Algorithm_Competition" target="_blank">here</a>.</p>
+
+          <h2 class="section-heading">Reinforcement Learning</h2>
+
+          <p>Samsung provided a framework code that implemented TenserFlow and Deep Q-Network (DQN) learning, and the participant was tasked with creating the reward function that would train the bot to pursue rewards and complete driving in the shortest amount of time and modifying the DQN parameters. The specific file that I edited was "rl_code_v7/rl/dqn_custom_client.py", where I designed my own algorithm that gave rewards based on its speed, distance from optimal position on the road, and angle at which it was travelling. There were some speedbumps (pun intended) along the way that hindered my ability to come up with a complete learned algorithm. First, as an intern I was equipped with an outdated laptop that had limited hardware capabilities, and this proved to be troublesome as the simulator required the algorithm to consistently take in inputs and calculate outputs every tenth of a second, and my computer struggled to keep up with the speeds and could not run calculations at that speed. This applied to both the reinforcement learning and rule-based driving parts of the competition. Ultimately I asked for a better computer, and after being approved had a much newer model and had to reconfigure my code from the beginning. Second, I was unable to successfully train a model to drive as I expected; it was completing the races but at a very slow speed. I realized that the problem was that I had not factored into the reward function time. It had been taking high speeds as part of its reward, which I expected to persuade the bot to drive faster, but in fact it was sacrificing a greater reward at each time point because it realized that it could have a much better overall reward by staying on the track as long as possible and accruing many small rewards, as opposed to big rewards. I could have solved this problem by inviting the car to care only about immediate rewards and not collect them, but also having rewards in the future and accruing rewards was an important part of the reward function. Another possibility would have been to factor in time as a sort of negative reward function, penalizing it for taking too much time. However, it was realized too late and my internship came to an end before I could successfully implement a proper solution.</p>
+
+          <h2 class="section-heading">Rule-based</h2>
+
+          <p>The rule-based competition also had a framework, but it was mostly just to connect the algorithm to the driving simulator (AirSim). My code can be found in "rule_code_v8/rule/driving_client.py". The algorithm controlled inputs to the car, namely accelerating, braking, and turning. Simplified, my calculated the forward angles of the track (available by simulator) and based on the angle of the forward pieces of track, slowed down and calculated the optimal location of the car to be in as it approached the curve. It also calculated optimal location to be on the track if there is an obstacle ahead. If there is an obstacle ahead and interfered with the calculated optimal location on the track it adjusted to avoid it. I implemented this by having the car always want to be in the center of the racetrack. However, if there are curves or obstacles, it "changes" the center to a different part of the road, and the car moved to the according center. There were a lot more specifics that required much fine-tuning, but that is the gist of the algorithm.</p>
+
+          <h2 class="section-heading">Result</h2>
+
+          <p>I ended up reaching the quarterfinals for rule-based driving competition, and got on the leaderboard (albeit not high up) for the reinforcement learning competition, and as reward for my efforts I was recognized by the CEO and received two Amazon gift cards for my work.</p>
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p class="copyright text-muted">swk</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

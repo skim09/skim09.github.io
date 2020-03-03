@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>FIFA 19 Player Analysis - Sangwon Kim</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">swk</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="data-projects.html">Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="software.html">Software</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/black.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>FIFA 19: A Study of Different Player Types</h1>
+            <h2 class="subheading">An Application of Data Exploration and Pattern Discovery Techniques to Video Game Data</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><i>Sangwon Kim, Changun Pyo, Yuan Wang</i></p>
+
+          <h2 class="section-heading">Problem Statement</h2>
+          <p>First, we want to find out whether there are specific types of players in the FIFA 19 game. If so, we want to characterize these player types. Second, we want to see if there are certain underlying dimensions of player attributes that we could uncover from relevant player attributes in the dataset. Answering these questions would help us better characterize the performance and characteristics of soccer players in FIFA 19, which could be utilized by gamers to assemble a high-performing team of players. Our results could also be potentially helpful for understanding player types and performance in real life. Lastly, we want to find out if we could find meaningful player clusters (types) based on the underlying dimensions (factors) that we’ve generated. We want to compare these results with our results from the first problem above and see if we could generate interesting conclusions or conjectures. This is more of a data science experiment that could reveal insights about the dataset and the methods that we have employed.</p>
+
+          <h2 class="section-heading">Data Description</h2>
+
+          <p>This dataset was downloaded from the open source data science community Kaggle, uploaded by Karan Gadiya. The data itself was scraped from the website sofifa.com, which is an online website containing data of the FIFA 19 video game player database. The dataset is comprised of 18,207 observations (individual players) and 89 variables. The variables all describe a certain player, with some being basic descriptors such as Name, Age, Nationality, Club, Height, and Weight, and some are numeric values that determine a player’s in-game ability, such as Overall (Rating), Shooting, Passing, Sprint Speed, etc. These variables that rate a player’s ability are integers, ranging from scores of 0 to 100.</p>
+
+          <h2 class="section-heading">Data preprocessing</h2>
+
+          <p>We performed a series of steps in order to prepare our data for analysis. Initially, we subsetted our data to only contain players that did not have a position value of “GK”, or goalkeeper, and had a minimum“Overall” rating of 75. We decided to do this for a number of reasons.First, goalkeepers are obviously unique as they are players that use their hands to keep the ball out of the goal, and even wear different colors to differentiate themselves. Goalkeepers would only create more noise in our analysis as they would be outliers in a study that looked mainly at players who spend the game playing the ball with their feet.Second, we decided to look at players with only a rating of 75 or above because any player lower than that is likely to be a (relatively) weaker player, playing in a lower league and is lesser known. Because of this, it is more likely that these players do not have skill attributes that truly represent their ability, and are more likely to have been computer generated by the developer of the game using some random algorithm.These players are also more likely to be colorless jack-of-all-trades players with no real unique style of play, and it would be less meaningful to perform an analysis on randomly generated player attributes.</p>
+
+          <p>After that, we subsetted the variables so that we were only looking at skill attributes (like Shooting, Sprint Speed, Stamina, Passing, Interceptions) and not goalkeeper attributes, as none of our players were goalkeepers. We also only kept some important basic attributes such as Name, Nationality, Club, Value, and others and discarded useless ones such as Photo, Flag, Logo, and the suitability ratings per position.</p>
+
+          <p>Lastly, we created a new set of values for the Position variable. It used to be composed of 27 different positions, many of which usually played in the same area. For example, ST and CF (Striker and Center Forward, respectively) are very similar positions and essentially play in the same area of the pitch. WB and FB (Wing Back and Full Back) are both positions that play in the back side corners of the pitch. As such, we had many positions that had overlapping purposes, and so we merged similar positions together to get a final list of 8 positions that contained the previous 27 positions and was much more interpretable. After performing these manipulations, we had our dataset ready to go for analysis. While there were initially missing values in the original dataset, this subset had no missing data, so no necessary missing data manipulation was required.</p>
+
+          <h2 class="section-heading">Statistical Approaches</h2>
+
+          <p>For basic data visualization, we plotted the distribution of overall
+          scores and that of condensed positions for both the entire dataset and
+          the subset that our study focuses on. These are bar plots, with each bar
+          corresponding to a particular value in either the overall score column
+          or the condensed position column, and the height of the bar
+          corresponding to the number of rows that takes such a value in the
+          corresponding column.</p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-3-1.png" alt="">
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-3-2.png" alt="">
+
+          <p>After the basic visualization, we used factor analysis and cluster analysis. To answer our first question (in the problem statement), we used k-means cluster analysis on the quantitative performance variables to divide players into a certain number of clusters. We found the optimal number of clusters using a Scree plot, and used the k-means method to find these clusters. K-means clustering analysis first randomly selects n (a number that we choose based on the Scree plot) rows and then groups the rest of the rows to their closet neighbor within these n rows, thereby forming n groups of rows. It then creates n new rows, each of which is the mean of one group of rows, and each of these new rows becomes the “center” of their corresponding group. It uses these centers to generate a new grouping of all the rows, where each row is grouped with its closet center. It then calculates the mean of the rows in each group and thus generates the new centers. The process is repeated 25 times and the n groups we get at the end are the clusters. These clusters are grouped based on the the rows’ similarity with each other: the rows within each cluster are in general more similar to each other than with those not in the cluster.</p>
+
+          <p>To answer the second question, we used (principal axis) factor analysis on the quantitative performance variables to generate a number of “factors” that explain the most variation in the original variables. We again used the Scree plot to find out the optimal number of factors to choose. Then we used principal axis factor analysis with this number of factors. Each row gets a rating for each of the factors, and the value of a particular variable in a particular row could be expressed as the sum of values of the factors, each multiplied by a coefficient (greater than 0 and less than 1, uniform across all the rows), plus a residual term unique to each row. By using varimax rotation, we maximized the variance among the coefficients across different columns, so that we could better interpret these factors. In the end, we tried to interpret what each factor measures.</p>
+
+          <p>To answer the third question, we performed k-means cluster analysis on the factors that we generated in the second step. We ended up with clusters that reflect the similarity of the rows as measured by their values in these factors.</p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-4-1.png" alt="">
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-5-1.png" alt="">
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-6-1.png" alt="">
+
+          <h2 class="section-heading">Results</h2>
+
+          <p><b>Cluster Results</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-7-1.png" alt="">
+
+          <p><b>Cluster 1 Results</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-8-1.png" alt="">
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-8-2.png" alt="">
+
+          <p><i>Limited Defender</i> cluster: This cluster includes players with high Marking, Sliding Tackle, Standing Tackle, Strength, and low Positioning, Dribbling, Long Shots, Vision attributes. This cluster has a high number of Centre-backs who play in front of a goalkeeper and serve as the last defender, preventing goals from forwards of the opposition team.</p>
+
+          <p><b>Cluster 2 Results</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-9-1.png" alt="">
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-9-2.png" alt="">
+
+          <p><i>Ball-Playing Defender</i> cluster: This cluster includes players with high Marking, Sliding Tackle, Standing Tackle, Interceptions attributes, and low Finishing, Penalties, Volleys attributes. Unlike the first cluster, this cluster has a large proportion of FB and (defensive) Midfielder players who participate on passing and ball carrying more than the CB, limited defender players.</p>
+
+          <p><b>Cluster 3 Results</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-10-1.png" alt="">
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-10-2.png" alt="">
+
+          <p><i>Passer</i> cluster: This cluster includes players with high Long Passing, Short Passing, Vision attributes, and low Heading Accuracy, Jumping, Sprint Speed, Strength attributes. Most of the players who categorized as “passer” are Centre-Midfielders. These players are also called “playmakers” who usually results with most passing and most touches in the game.</p>
+
+          <p><b>Cluster 4 Results</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-11-1.png" alt="">
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-11-2.png" alt="">
+
+          <p><i>Dribbler</i> cluster: This cluster includes players with high Acceleration, Agility, Dribbling, Sprint Speed attributes, and low Aggression, Strength, Standing Tackle, Interceptions attributes. The dribblers are mostly wingers. These type of players are exposed in a 1-on-1 situation. To create chances from outside of the field, the game requires a high ability of dribbling and foot skills.</p>
+
+          <p><b>Cluster 5 Results</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-12-1.png" alt="">
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-12-2.png" alt="">
+
+          <p><i>Finisher</i> cluster: This cluster includes players with high Positioning, Finishing, Penalties, Volleys attributes and low Interceptions, Long Passing, Standing Tackle, Sliding Tackle attributes. Mostly, forwards who play at the very front position, finishers need the ability to score goals from the chances created by the teammates.</p>
+
+          <p><b>Factor Analysis Results</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-13-1.png" alt="">
+
+          <p>Secondly, in factor analysis, we had the following underlying dimensions
+          of variables that are factored.</p>
+
+          <p>1) Kicking: Variables such as shot power and longshots are the top two attributes of this factor. Followed by variables such as volleys and penalties, we stated that this factor represents the kicking skill of the player.</p>
+
+          <p>2) Defense: Composition of highly correlated defending skill variables like interceptions and tackling, this factor represents the defensive skills of the player among all the attributes.</p>
+
+          <p>3) Speed: Acceleration, sprint speed, and agility all influence the speed of the players in the game. Since this type of attributes is needed for wingers, it also shows a meaningful amount of relationship with dribbling and crossing, too.</p>
+
+          <p>4) Strength: By multiplying negative 1 (-1) to the attributes colored red on the factor plot, the remaining variables like heading accuracy, jumping and strength is correlated with the physicality of the player.</p>
+
+          <p>5) Composure: The two main attributes in this factor, reactions and composure, can be described as mental abilities. Also, the high relationship with short passing and ball-control can be explained by claiming the calmness of a player could be helpful to control the ball under the pressure situation.</p>
+
+          <p><b>Cluster Analysis + Factor Analysis</b></p>
+
+          <p>We combined our independently run cluster and factor analyses by averaging the factor scores of each cluster. For example, the first row means that players in Cluster 1 (Limited Defenders) were rated relatively much lower in kicking, speed, and composure, but relatively higher in defense and strength. These results make a lot of sense even just by taking a look at the most extreme values for each factor. The best ball kickers are passers and the worst are limited defenders, the best defenders are ball-playing defenders and the worst defenders are finishers, the fastest players are dribblers and the slowest are limited defenders, the strongest players are finishers and the weakest are dribblers, and the most mentally composed players are passers and the least composed are limited defenders.</p>
+
+          <p><b>Cluster Analysis of Factors</b></p>
+
+          <img class="img-fluid" src="img/fifa19_EDA_Rmarkdown_files/figure-gfm/unnamed-chunk-15-1.png" alt="">
+
+          <p>Lastly, in the cluster analysis of the five factors generated above, its results are simply not as interpretable as those of the previous cluster analysis. A lot of the nuanced deductions we were able to make based on the mean value of different variables in different clusters could not be made in these results, mostly because we have a much smaller number of variables. In addition, some of the clusters seem somewhat “odd”. For example, cluster 3 has the highest mean speed but also the highest mean defense. Based on our knowledge of soccer, such an association seems not to “make sense,” because the fastest players tend to be the attacking players. These oddities make the set of clusters harder to interpret.</p>
+
+          <h2 class="section-heading">Discussion</h2>
+
+          <p>First, we will probe a bit deeper in the clusters generated from the factors, which we have been unable to interpret as well as we did the clusters generated from the 29 original quantitative variables. Above is a two-way table displaying the relationship between the two clustering. We can see that the two are not robustly correlated, especially for FACluster 2, 3, and 5. This means that the two methods generated rather different clusters. When we look at the most distinct (highest or lowest) variables for the different clusters, we notice that they are most strongly correlated with different factors. For example, the most distinct variables of Passers are Long Passing, Short Passing, Vision (highest), Heading Accuracy, Jumping, Sprint Speed, and Strength (lowest), and these variables span all the factors. If we see that the most distinct variables of a cluster generally correspond to the same factor, then we would be surprised by the variation in the two clustering. This is because if all the most distinctive variables of a cluster in the cluster analysis based on original variables are covered by the same factor, then the distinctness of the list of variables would likely be preserved by distinctiveness in that factor, and the cluster analysis based on factors would likely capture the same cluster. This is a speculative analysis.</p>
+
+          <p>Moving on to limitations, the database produced by Fifa19 in-game does not specify the source of data collection. This implies the credibility of the source of the data is unclear. Moreover, it is possible that some attributes are randomly generated by a random algorithm, thus the data for each individual is inconsistent with its calculation method. To solve this problem, we restricted the sample to over 75 overall scored players, with an assumption that more famous players will have a more accurate calculation of their attributes.</p>
+
+          <p>On the other hand, these attributes are only applicable for the 2018-2019 season of the soccer league. So the results of this study should not be generalized without further consolidation of previous data of the player.</p>
+
+          <p>In terms of literature review and research, we have not been able to find many relevant sources. There is a statistical analysis of soccer matches, but they involve the tracking of player movements during matches, and thus are based on a completely different type of dataset we the one we have analyzed in this project. Both Carling, Bloomfield, Nelson, et al. (2008) and Carling, Williams and Reilly, (2007) agree that motion detecting analysis could be very helpful in measuring player attributes in the realms of tactical, physical, behavioral and technical performance. Since our dataset measures certain similar capabilities (in our factor analysis, for example, we generated factors that were more physical-oriented and ones that were more technique-oriented), and we could try to incorporate data from motion-analysis studies into our models to strengthen our conclusions.</p>
+
+          <p>There is also a report by Torgler & Schmidt (2007) that concludes that both real income and relative income are correlated with soccer player performance, and that higher income is associated with better performance. Therefore, a further question to study would be a correlation between annual player income (included in this dataset) and their performance as measured by overall score or a composite score of different individual scores. However, since the variables are made up by a video game company, the results might not be meaningful. Still, it would be interesting to attempt such a study and see the results that one gets.</p>
+
+          <h2 class="section-heading">References</h2>
+
+          <p>Benno Torgler., Sascha L. Schmidt (2007) What shapes player performance in soccer? Empirical findings from a panel analysis, Applied Economics, 39:18, 2355-2369, DOI: 10.1080/00036840600660739</p>
+          <p>C. Carling., J. Bloomfield., L, Nelsen., et al. Sports Med The Role of Motional Analysis in Elite Soccer (2008) 38: 839. <https://doi.org/10.2165/00007256-200838100-00004></p>
+          <p>Christopher Carling., A. Mark Williams., Thomas Reilly (2007) Handbook of Soccer Match Analysis: A Systematic Approach to Improving Performance. <https://content.taylorfrancis.com/books/download?dac=C2009-0-23706-8&isbn=9781134302024&format=googlePreviewPdf></p>
+
+
+          <p><i>Wesleyan University | Spring 2019 | Exploratory Data Analysis | Professor Robert Kabacoff</i></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p class="copyright text-muted">swk</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
